@@ -74,5 +74,6 @@
 19. Click Add
 20. At top of the page for proxy mode, choose "Use proxies based on their pre-defined patterns and priorities"
 21. Open up your cluster
-22. In the summary tab, in the section "Application user interfaces" you should see links to Zeppelin, Spark History Server and Resource Manager if the process worked correctly. 
+22. In the summary tab, in the section "Application user interfaces" you should see links to Zeppelin, Spark History Server and Resource Manager if the process worked correctly.
+23. The next time you should be able to skip the FoxyProxy steps and just SSH in. 
 
