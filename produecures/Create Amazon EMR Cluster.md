@@ -1,5 +1,7 @@
 # Create Amazon EMR with Amazon Key
 
+The steps below are for Linux/Mac and Google Chrome
+
 1. Create S3 Storage buckets for:
     + Bootstraps
     + EMR logs
