@@ -11,9 +11,10 @@ The steps below are for Linux/Mac and Google Chrome
 	+ Use mkdir .ssh if not done already to create hidden directory for keys
 	+ CD into .ssh directory
 	+ Enter:
-		+ aws ec2 create-key-pair --key-name spark-cluster2 --query 'KeyMaterial' --output text > spark-cluster2.pem 
-	+ chmod 400 spark-cluster2.pem
-	+ aws ec2 describe-key-pairs --key-name spark-cluster2
+	
+			aws ec2 create-key-pair --key-name spark-cluster2 --query 'KeyMaterial' --output text > spark-cluster2.pem
+			chmod 400 spark-cluster2.pem
+			aws ec2 describe-key-pairs --key-name spark-cluster2
     + **Note:** Checks to see if key pair is found on AWS
 
 
