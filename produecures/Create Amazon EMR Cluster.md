@@ -25,6 +25,54 @@
         --log-uri s3://emrlogs-am521 
 
 *Notes:
-  + --bootstrap-actions Path=<path to S3 bootstrap bucked created above>
-  + --log-uri  <path to EMR logs bucket created above>
+  + --bootstrap-actions Path: pa
+  
+  th to S3 bootstrap bucked created above
+  + --log-uri: path to EMR logs bucket created above
   + --auto-terminate is removed at the end of CLI commands for now. You probably want that at end in the future to prevent the cluster from using $$$. 
+  
+ 4. Open the cluster by clicking on the cluster name in "Cluster" section of Amazon EMR.
+ 5. In the "Security and access section", click on the link to "Security groups for Master".
+ 6. Add rule for inbound "SSH" access into the master node if not done so already. Make sure the source is set to your IP address and not open to the public.
+ 7. Jump back to the EMR main page
+ 8. Click again on the cluster name
+ 9. Wait till the Master and Core are least created or in the bootstraping process for now to do the next steps. In the future you will not need to wait.
+ 10. These next steps, can be followed by using the AWS tutorials the section "Application user interfaces" and clicking on the link "Enable an SSH Connection". Open an SSH Tunnel to Amazon EMR Master Node:
+ 
+ 			ssh -i ~/.ssh/spark-cluster2.pem -ND 8157 hadoop@ec2-54-190-127-231.us-west-2.compute.amazonaws.com
+			
+*Notes: 
++ Make sure to put the .ssh folder in the path to the pem key created above.
++ Replace everything after "hadoop@" with your Master public DNS information found in the "Summary" tab of your Spark cluster. 
+11. Install "Standard" version FoxyProxy on Chrome [foxyproxy link](http://foxyproxy.mozdev.org/downloads.html)
+12. Restart Chrome after installing FoxyProxy
+13. Save the following XML information to file called "foxyproxy-settings.xml:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<foxyproxy>
+    <proxies>
+        <proxy name="emr-socks-proxy" id="2322596116" notes="" fromSubscription="false" enabled="true" mode="manual" selectedTabIndex="2" lastresort="false" animatedIcons="true" includeInCycle="true" color="#0055E5" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="false" disableCache="false" clearCookiesBeforeUse="false" rejectCookies="false">
+            <matches>
+                <match enabled="true" name="*ec2*.amazonaws.com*" pattern="*ec2*.amazonaws.com*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="*ec2*.compute*" pattern="*ec2*.compute*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="10.*" pattern="http://10.*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="*10*.amazonaws.com*" pattern="*10*.amazonaws.com*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="*10*.compute*" pattern="*10*.compute*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="*.compute.internal*" pattern="*.compute.internal*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+                <match enabled="true" name="*.ec2.internal*" pattern="*.ec2.internal*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false" />
+            </matches>
+            <manualconf host="localhost" port="8157" socksversion="5" isSocks="true" username="" password="" domain="" />
+        </proxy>
+    </proxies>
+</foxyproxy>
+```
+15. Click the FoxyProxy Icon in Chrome
+16. Select Options
+17. Click Import/Export
+18. Choose file "foxyproxy-settings.xml" and click Open
+19. Click Add
+20. At top of the page for proxy mode, choose "Use proxies based on their pre-defined patterns and priorities"
+21. Open up your cluster
+22. In the summary tab, in the section "Application user interfaces" you should see links to Zeppelin, Spark History Server and Resource Manager if the process worked correctly. 
+
