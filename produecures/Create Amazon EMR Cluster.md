@@ -36,7 +36,7 @@ The steps below are for Linux/Mac and Google Chrome
  6. Add rule for inbound "SSH" access into the master node if not done so already. Make sure the source is set to your IP address and not open to the public.
  7. Jump back to the EMR main page
  8. Click again on the cluster name
- 9. Wait till the Master and Core are least created or in the bootstraping process for now to do the next steps. In the future you will not need to wait.
+ 9. Wait till the Master and Core are at least created or in the bootstraping process to do the next steps. In the future you will not need to wait.
  10. These next steps, can be followed by using the AWS tutorials the section "Application user interfaces" and clicking on the link "Enable an SSH Connection". Open an SSH Tunnel to Amazon EMR Master Node:
  
  			ssh -i ~/.ssh/spark-cluster2.pem -ND 8157 hadoop@ec2-54-190-127-231.us-west-2.compute.amazonaws.com
