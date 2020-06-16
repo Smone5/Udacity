@@ -27,7 +27,7 @@ The steps below are for Linux/Mac and Google Chrome
         --log-uri s3://emrlogs-am521 
 
 *Notes:
-  + --bootstrap-actions Path: path to S3 bootstrap bucked created above
+  + --bootstrap-actions Path: path to S3 bootstrap bucket and file created above
   + --log-uri: path to EMR logs bucket created above
   + --auto-terminate is removed at the end of CLI commands for now. You probably want that at end in the future to prevent the cluster from using $$$. 
   
