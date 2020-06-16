@@ -46,7 +46,7 @@ The steps below are for Linux/Mac and Google Chrome
 + Replace everything after "hadoop@" with your Master public DNS information found in the "Summary" tab of your Spark cluster. 
 11. Install "Standard" version FoxyProxy on Chrome [foxyproxy link](http://foxyproxy.mozdev.org/downloads.html)
 12. Restart Chrome after installing FoxyProxy
-13. Save the following XML information to file called "foxyproxy-settings.xml:
+13. Save the following XML information to file called *foxyproxy-settings.xml*:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
