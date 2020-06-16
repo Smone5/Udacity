@@ -25,9 +25,7 @@
         --log-uri s3://emrlogs-am521 
 
 *Notes:
-  + --bootstrap-actions Path: pa
-  
-  th to S3 bootstrap bucked created above
+  + --bootstrap-actions Path: path to S3 bootstrap bucked created above
   + --log-uri: path to EMR logs bucket created above
   + --auto-terminate is removed at the end of CLI commands for now. You probably want that at end in the future to prevent the cluster from using $$$. 
   
